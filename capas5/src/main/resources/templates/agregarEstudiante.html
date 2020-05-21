@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Nuevo Estudiante</title>
+</head>
+<body>
+
+	<h1>Ingresar Nuevo Estudiante</h1>
+	<form method="post" th:action="@{/save}" th:object="${estudiante}">
+          	<table cellpadding="10">          	          			
+          		<tr>
+          			<td><label>Nombre: </label></td>
+          			<td><input type="text" id="nombre" class="form-control" onfocus="this.value=''" th:field="*{nombre}" >
+          			<span th:errors="*{Nombre}" style="color:#DE0000" ></span></td>
+          			
+          		</tr>
+          		<tr>
+          			<td><label>Apellido:</label></td>
+          			<td><input type="text" id="apellido" class="form-control" th:field="*{apellido}" >
+          			<span th:errors="*{Apellido}" style="color:#DE0000" ></span></td>
+          			
+          		</tr> 
+          		<tr>
+          			<td><label>Edad (no menor a 18):</label></td>
+          			<td><input type="number" id="edad" class="form-control" th:field="*{edad}" >
+          			<span th:errors="*{Edad}" style="color:#DE0000" ></span></td>
+          			
+          		</tr> 
+          		<tr>
+          			<td><label>Activo:</label></td>
+          			<td><input type="radio" id="activo" class="form-control" th:field="*{Estado}" th:value="${true}" >
+          			<td><label>Inactivo:</label></td>
+          			<td><input type="radio" id="inactivo" class="form-control" th:field="*{Estado}" th:value="${false}" >
+          			
+          			
+          		</tr>          		          		
+          		<tr>
+          			<td><input type="submit"  class="btn btn-primary btn-block" value="Guardar" /></td>          			
+          		</td>
+          		</tr>
+          		
+          	</table>       
+          	</form>
+
+</body>
+</html>
