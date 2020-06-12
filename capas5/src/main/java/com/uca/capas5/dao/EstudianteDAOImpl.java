@@ -34,7 +34,7 @@ public class EstudianteDAOImpl implements EstudianteDAO{
 	{
 		try
 		{
-			if(estudiante.getCodigoEstudiante() == null)
+			if(estudiante.getCodigoestudiante() == null)
 			{
 				entityManager.persist(estudiante);
 			}

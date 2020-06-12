@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/editarEstudiante}" th:object="${estudiante}">
+          	<input type="hidden" name="codigoestudiante" class="form-control" th:field="*{codigoestudiante}" />
+          	<table cellpadding="10">  		
+          		<tr>
+          			<td><label>Nombres: </label></td>
+          			<td><input type="text" id="nombre" class="form-control" th:field="*{nombre}" ></td>
+          		</tr>
+          		<tr>
+          			<td><label>Apellidos:</label></td>
+          			<td><input type="text" id="apellido" class="form-control" th:field="*{apellido}" ></td>
+          		</tr>
+          		<tr>
+          			<td><label>Edad:</label></td>
+          			<td><input type="text" id="edad" class="form-control" th:field="*{edad}" ></td>
+          		</tr>
+          		<tr>
+          			<td><label>Estado:</label></td>
+          			<td><input type="checkbox" id="estado"  th:field="*{estado}" > Activo</td>
+          		</tr>
+          		<tr>
+          			<td><input type="submit" class="btn btn-primary btn-block" value="Guardar cambios" /></td>
+          		</tr>
+          	</table>
+          	</form>
+          	<form th:action="@{/estudiante}" method="post">
+				<input type="submit" value="Cancelar">
+			</form><br>
+</body>
+</html>

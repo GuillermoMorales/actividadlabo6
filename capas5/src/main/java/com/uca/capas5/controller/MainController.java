@@ -81,6 +81,44 @@ public class MainController {
 		return mav;
 	}
 	
+	@RequestMapping("/filtrarEstudiante")
+	public ModelAndView filtrarEstudiante(@RequestParam(value="nombre")String cadena)
+	{
+		ModelAndView mav = new ModelAndView();		
+		List<Estudiante> estudiantes = null;
+		try
+		{
+			estudiantes = estudianteService.filtrar(cadena);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		mav.addObject("estudiantes",estudiantes);
+		mav.setViewName("main");
+		return mav;
+	}
+	
+	@RequestMapping("/empezarEstudiante")
+	public ModelAndView empezarEstudiante(@RequestParam(value="apellido")String cadena)
+	{
+		ModelAndView mav = new ModelAndView();		
+		List<Estudiante> estudiantes = null;
+		try
+		{
+			estudiantes = estudianteService.empezar(cadena);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		mav.addObject("estudiantes",estudiantes);
+		mav.setViewName("main");
+		return mav;
+	}
+	
+	
+	
 	@RequestMapping("/save")
 	public ModelAndView guardar(@Valid @ModelAttribute Estudiante estudiante, BindingResult result)
 	{
@@ -134,6 +172,35 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("estudiante", new Estudiante());
 		mav.setViewName("agregarEstudiante");
+		return mav;
+	}
+	
+	@RequestMapping("/buscareditar")
+	public ModelAndView buscar16(@RequestParam Integer codigo) {
+		ModelAndView mav = new ModelAndView();
+		Estudiante e = estudianteService.findOne(codigo);
+		mav.addObject("estudiante", e);
+		mav.setViewName("editar");
+		return mav;
+	}
+	
+	@RequestMapping("/editarEstudiante")
+	public ModelAndView editarEstudiantet(@ModelAttribute Estudiante estudiante) {
+		ModelAndView mav = new ModelAndView();
+		//Mando a llamar al servicio encargado de guardar a la entidad
+		estudianteService.save(estudiante);
+		List<Estudiante> estudiantes = null;
+		try
+		{			
+			estudiantes = estudianteService.findAll();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		mav.addObject("estudiantes",estudiantes);
+		mav.setViewName("main");
+		mav.addObject("resultado", 1);
 		return mav;
 	}
 }

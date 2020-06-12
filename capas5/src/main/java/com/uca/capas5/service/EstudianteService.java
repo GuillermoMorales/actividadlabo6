@@ -18,6 +18,10 @@ public interface EstudianteService {
 	public void save(Estudiante estudiante) throws DataAccessException;
 	
 	public void delete(Integer codigoEstudiante) throws DataAccessException;
+
+	public List<Estudiante> filtrar(String cadena) throws DataAccessException;
+
+	public List<Estudiante> empezar(String cadena) throws DataAccessException;
 	
 	
 }

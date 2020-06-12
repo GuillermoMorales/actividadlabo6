@@ -16,7 +16,7 @@
 		</thead>
 		<th:block th:each = "estudiante, row:${estudiantes}">	
 		<tr>
-			<th th:text="${estudiante.codigoEstudiante}">
+			<th th:text="${estudiante.codigoestudiante}">
 			<th th:text="${estudiante.nombre}">
 			<th th:text="${estudiante.apellido}">
 			<th th:text="${estudiante.edad}">
@@ -29,12 +29,24 @@
 		<label>Buscar por codigo de estudiante: </label><input type="number" name="codigo"><br>
 		<input type="submit" value="Buscar">
 	</form><br>
+	<form th:action="@{/buscareditar}" method="post">
+		<label>Editar por codigo de estudiante: </label><input type="number" name="codigo"><br>
+		<input type="submit" value="Buscar">
+	</form><br>
 	<form th:action="@{/insertarEstudiante}" method="post">		
 		<input type="submit" value="Insertar Estudiante">
 	</form><br>
 	<form th:action="@{/borrarEstudiante}" method="post">
 		<label>Borrar estudiante por codigo: </label><input type="number" name="codigo"><br>		
 		<input type="submit" value="Borrar">
+	</form><br>
+	<form th:action="@{/filtrarEstudiante}" method="post">
+		<label>Ingrese la cadena por la que quiere filtrar: </label><input type="text" name="nombre"><br>		
+		<input type="submit" value="Filtrar">
+	</form><br>
+	<form th:action="@{/empezarEstudiante}" method="post">
+		<label>Ingrese la letra por la que quiere filtrar: </label><input type="text" name="apellido"><br>		
+		<input type="submit" value="Filtrar">
 	</form><br>
 </body>
 </html>

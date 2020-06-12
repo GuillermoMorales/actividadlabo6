@@ -25,25 +25,25 @@ public class Estudiante {
 	@GeneratedValue(generator="estudiante_id_estudiante_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "estudiante_id_estudiante_seq", sequenceName = "public.estudiante_id_estudiante_seq", allocationSize = 1)	
 	@Column(name="id_estudiante")
-	private Integer codigoEstudiante;
+	private Integer codigoestudiante;
 	
 	@Size(message="El campo no debe de tener más de 30 caracteres", max=30)
 	@NotEmpty(message="El campo no debe estar vacío")
 	@Column(name="nombre")
-	private String Nombre;
+	private String nombre;
 	
 	@Size(message="El campo no debe de tener más de 30 caracteres", max=30)
 	@NotEmpty(message="El campo no debe estar vacío")
 	@Column(name="apellido")
-	private String Apellido;
+	private String apellido;
 	
 	@Min(value=18,message="No puede ser menor a 18 años")
 	@javax.validation.constraints.NotNull(message="El campo no puede estar vacío")
 	@Column(name="edad")
-	private Integer Edad;
+	private Integer edad;
 	
 	@Column(name="estado")
-	private Boolean Estado;
+	private Boolean estado;
 	
 	@OneToMany(mappedBy="estudiante",fetch=FetchType.EAGER)
 	private List<Computadora> computadoras;
@@ -61,58 +61,61 @@ public class Estudiante {
 		
 	}
 
-	public Integer getCodigoEstudiante() {
-		return codigoEstudiante;
-	}
-
-	public void setCodigoEstudiante(Integer codigoEstudiante) {
-		this.codigoEstudiante = codigoEstudiante;
-	}
+	
+	
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public String getApellido() {
-		return Apellido;
+		return apellido;
 	}
 
 	public void setApellido(String apellido) {
-		Apellido = apellido;
+		this.apellido = apellido;
 	}
 
 	public Integer getEdad() {
-		return Edad;
+		return edad;
 	}
 
 	public void setEdad(Integer edad) {
-		Edad = edad;
+		this.edad = edad;
 	}
 
 	public Boolean getEstado() {
-		return Estado;
+		return estado;
 	}
 
 	public void setEstado(Boolean estado) {
-		Estado = estado;
+		this.estado = estado;
 	}
 	
 	//Delegate para activo o inactivo
 	public String getEstadoDelegate()
 	{
-		if(this.Estado == null)
+		if(this.estado == null)
 		{
 			return "";
 		}
 		else
 		{
-			if(this.Estado) return "ACTIVO";
+			if(this.estado) return "ACTIVO";
 			else return "INACTIVO";
 		}
+	}
+
+	public Integer getCodigoestudiante() {
+		return codigoestudiante;
+	}
+
+	public void setCodigoestudiante(Integer codigoestudiante) {
+		this.codigoestudiante = codigoestudiante;
 	}
 		
 	
